@@ -1,0 +1,25 @@
+.PHONY: all
+.PHONY: clean
+
+all: export MAKEFLAGS=
+all: test_framework.ko test_framework-objdump.asm test_framework-readelf.asm test_framework-readelfheaders.asm
+
+test_framework.ko:
+	make -f Makefile.freebsd_module
+
+test_framework-objdump.asm: test_framework.ko
+	objdump -D -t -r -R -g ./test_framework.ko > test_framework-objdump.asm 2>&1
+
+test_framework-readelf.asm: test_framework.ko
+	readelf -a ./test_framework.ko > test_framework-readelf.asm 2>&1
+
+test_framework-readelfheaders.asm: test_framework.ko
+	readelf -S test_framework.ko > test_framework-readelfheaders.asm
+
+clean: export MAKEFLAGS=
+clean:
+	make -f Makefile.freebsd_module clean
+	rm -f \@
+	rm -f machine
+	rm -f x86
+	rm -f *.asm

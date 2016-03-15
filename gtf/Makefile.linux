@@ -1,0 +1,105 @@
+KERNEL_VERSION:=linux-3.1.1
+TEST_FRAMEWORK_NAME:=test_framework_$(DRIVER_NAME)
+
+DRIVER_SRC+=bus_generic_pci.c bus_platform.c bus_i2c.c bus_spi.c
+DRIVER_SRC+=enter_exit.c
+DRIVER_SRC+=function_tracker.c
+DRIVER_SRC+=global_lock.c
+DRIVER_SRC+=init_module.c
+DRIVER_SRC+=s2e_wrappers.c
+DRIVER_SRC+=symbol_lookup.c
+DRIVER_SRC+=test_state.c
+DRIVER_SRC+=testing_ep.c testing_ep_control.c
+# DRIVER_SRC+=uprintk.c
+
+# structs
+# DRIVER_SRC+=structs/ethtool_ops.c
+DRIVER_SRC+=structs/file_operations.c
+DRIVER_SRC+=structs/i2c_driver.c
+DRIVER_SRC+=structs/net_device_ops.c
+DRIVER_SRC+=structs/pci_driver.c
+DRIVER_SRC+=structs/platform_driver.c
+DRIVER_SRC+=structs/proto_ops.c
+DRIVER_SRC+=structs/spi_driver.c
+DRIVER_SRC+=structs/timer_list.c
+DRIVER_SRC+=structs/usb_driver.c
+DRIVER_SRC+=structs/vm_operations_struct.c
+
+# misc_checks
+DRIVER_SRC+=misc_checks/class.c
+DRIVER_SRC+=misc_checks/driver_core.c
+DRIVER_SRC+=misc_checks/gpio.c
+DRIVER_SRC+=misc_checks/i2c.c
+DRIVER_SRC+=misc_checks/irq.c
+DRIVER_SRC+=misc_checks/main.c
+DRIVER_SRC+=misc_checks/mii.c
+DRIVER_SRC+=misc_checks/pci.c
+DRIVER_SRC+=misc_checks/pci_config_space.c
+DRIVER_SRC+=misc_checks/platform.c
+DRIVER_SRC+=misc_checks/spi.c
+
+# hashtable
+DRIVER_SRC+=hashtable/hashtable.c
+DRIVER_SRC+=hashtable/hashtable_itr.c
+DRIVER_SRC+=hashtable/hashtable_utility.c
+
+# Yuck: hack to define a way to disable checks on the basis
+# of the driver.  This flag is the main/only difference between
+# different driver test framework compilations
+DISABLE_FLAG:=$(shell echo "-DDISABLE_$(DRIVER_NAME)_MJRCHECKS" | tr a-z A-Z)
+
+# Extra flags
+EXTRA_CFLAGS+=-fno-inline -O0 -g -Wall -DUSE_S2E -DENABLE_MJR_SYMDRIVE $(DISABLE_FLAG) -DLINUX_MODE
+
+# Test framework objects.
+DRIVER_OBJ=$(DRIVER_SRC:.c=.o)
+
+obj-m = $(TEST_FRAMEWORK_NAME).o
+$(TEST_FRAMEWORK_NAME)-objs := $(DRIVER_OBJ)
+
+all: app_ep_control \
+	$(TEST_FRAMEWORK_NAME).bblist \
+	$(TEST_FRAMEWORK_NAME).ko \
+	$(TEST_FRAMEWORK_NAME)-objdump.asm \
+	$(TEST_FRAMEWORK_NAME)-readelf.asm
+	echo "Done"
+
+ifneq "$(wildcard ../../coverage/parse)" ""
+# We have the bblist generator tool
+$(TEST_FRAMEWORK_NAME).bblist: $(TEST_FRAMEWORK_NAME).ko
+	@echo "Generating bblist file for coverage"
+	../../coverage/parse ./$(TEST_FRAMEWORK_NAME).ko > $(TEST_FRAMEWORK_NAME).bblist 2>&1
+else
+# We don't.  We've not released it publically yet because compiling the
+# one we use is an enormous pain.  It would take a couple pages to
+# communicate it.  In a nutshell, we use a modified version of DynInst:
+# http://www.dyninst.org/
+$(TEST_FRAMEWORK_NAME).bblist: $(TEST_FRAMEWORK_NAME).ko
+	@echo "Generating empty bblist file"
+	touch $(TEST_FRAMEWORK_NAME).bblist
+endif
+
+$(TEST_FRAMEWORK_NAME)-objdump.asm: $(TEST_FRAMEWORK_NAME).ko
+	objdump -D -t -r -g ./$(TEST_FRAMEWORK_NAME).ko > $(TEST_FRAMEWORK_NAME)-objdump.asm 2>&1
+
+$(TEST_FRAMEWORK_NAME)-readelf.asm: $(TEST_FRAMEWORK_NAME).ko
+	readelf -w ./$(TEST_FRAMEWORK_NAME).ko > $(TEST_FRAMEWORK_NAME)-readelf.asm 2>&1
+
+app_ep_control: app_ep_control.c
+	gcc $(EXTRA_CFLAGS) $@.c -o $@
+	ln -sf ./$(TEST_FRAMEWORK_NAME)/$@ ../$@
+
+$(TEST_FRAMEWORK_NAME).ko:
+	@echo "Disable: $(DISABLE_FLAG)"
+	@echo "Curdir: $(CURDIR)"
+	$(MAKE) -C ~/kernel/$(KERNEL_VERSION) M=$(CURDIR) modules
+	ln -sf ./$(TEST_FRAMEWORK_NAME)/$(TEST_FRAMEWORK_NAME).ko ../test_framework.ko
+
+# Obsolete since we're just making copies of the test framework
+# and then doing rm -rf on the entire copy.
+#clean:
+#	rm -rf *.o *.ko
+#	rm -rf \.*.o.d \.*cmd \.master* *.i
+#	rm -rf .tmp_versions Module.symvers *.mod.c modules.order Module.markers
+#	rm -f ./hashtable/*.o
+#	rm -f ./hashtable/\.*.o.d ./hashtable/\.*.cmd

@@ -1,0 +1,61 @@
+# Note: It is important to make sure you include
+# the <bsd.kmod.mk> makefile after declaring the
+# KMOD and SRCS variables.
+
+# Declare Name of kernel module
+KMOD    =  test_framework
+
+# Yuck: hack to define a way to disable checks on the basis
+# of the driver.  This flag is the main/only difference between
+# different driver test framework compilations
+CFLAGS += -DFREEBSD_MODE -O1 -g
+
+.PATH: ${.CURDIR}
+.PATH: ${.CURDIR}/hashtable
+.PATH: ${.CURDIR}/misc_checks
+.PATH: ${.CURDIR}/structs
+
+# Kernel interfaces
+MFILES += kern/linker_if.m
+MFILES += kern/device_if.m
+MFILES += kern/bus_if.m
+MFILES += dev/mii/miibus_if.m
+MFILES += dev/pci/pci_if.m
+
+SRCS += bus_if.h
+SRCS += device_if.h
+SRCS += linker_if.h
+SRCS += miibus_if.h
+SRCS += pci_if.h
+
+# Main driver source files
+SRCS += enter_exit.c
+SRCS += function_tracker.c
+SRCS += global_lock.c
+SRCS += init_module.c
+SRCS += s2e_wrappers.c
+SRCS += symbol_lookup.c
+SRCS += test_state.c
+# SRCS += uprintk.c
+
+# SRCS += freebsd_trace.c # Obsolete?
+SRCS += freebsd_omghax.c
+
+# structs
+
+# misc_checks
+SRCS += irq.c
+SRCS += freebsd.c
+
+# hashtable
+SRCS += hashtable.c
+SRCS += hashtable_itr.c
+SRCS += hashtable_utility.c
+
+# Export all test framework symbols.
+# Does not seem to matter?
+# EXPORT_SYMS += s2e_loop_after_wrapper
+EXPORT_SYMS += YES
+
+# Include kernel module makefile
+.include <bsd.kmod.mk>

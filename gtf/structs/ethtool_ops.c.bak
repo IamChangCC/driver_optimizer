@@ -1,0 +1,482 @@
+#include "../test_state.h"
+#include "../mega_header.h"
+
+//
+// ethtool_ops exported members
+//
+
+STATIC int ethtool_ops_get_settings_MJRcheck(const char *fn,
+                                             int prepost,
+                                             int *retval,
+                                             struct net_device **dev,
+                                             struct ethtool_cmd **cmd) {
+    check_routine_start();
+    check_routine_end();
+    return 0;
+}
+
+STATIC int ethtool_ops_set_settings_MJRcheck(const char *fn,
+                                             int prepost,
+                                             int *retval,
+                                             struct net_device **dev,
+                                             struct ethtool_cmd **cmd) {
+    check_routine_start();
+    check_routine_end();
+    return 0;
+}
+
+STATIC int ethtool_ops_get_drvinfo_MJRcheck(const char *fn,
+                                            int prepost,
+                                            struct net_device **dev,
+                                            struct ethtool_drvinfo **d) {
+    check_routine_start();
+    check_routine_end();
+    return 0;
+}
+
+STATIC int ethtool_ops_get_regs_len_MJRcheck(const char *fn,
+                                             int prepost,
+                                             int *retval,
+                                             struct net_device **dev) {
+    check_routine_start();
+    check_routine_end();
+    return 0;
+}
+
+STATIC int ethtool_ops_get_regs_MJRcheck(const char *fn,
+                                         int prepost,
+                                         struct net_device **dev,
+                                         struct ethtool_regs **regs,
+                                         void **data) {
+    check_routine_start();
+    check_routine_end();
+    return 0;
+}
+
+STATIC int ethtool_ops_get_wol_MJRcheck(const char *fn,
+                                        int prepost,
+                                        struct net_device **dev,
+                                        struct ethtool_wolinfo **wol) {
+    check_routine_start();
+    check_routine_end();
+    return 0;
+}
+
+STATIC int ethtool_ops_set_wol_MJRcheck(const char *fn,
+                                        int prepost,
+                                        int *retval,
+                                        struct net_device **dev,
+                                        struct ethtool_wolinfo **wol) {
+    check_routine_start();
+    check_routine_end();
+    return 0;
+}
+
+STATIC int ethtool_ops_get_msglevel_MJRcheck(const char *fn,
+                                             int prepost,
+                                             u32 *retval,
+                                             struct net_device **dev) {
+    check_routine_start();
+    check_routine_end();
+    return 0;
+}
+
+STATIC int ethtool_ops_set_msglevel_MJRcheck(const char *fn,
+                                             int prepost,
+                                             struct net_device **dev,
+                                             u32 *data) {
+    check_routine_start();
+    check_routine_end();
+    return 0;
+}
+
+STATIC int ethtool_ops_nway_reset_MJRcheck(const char *fn,
+                                           int prepost,
+                                           int *retval,
+                                           struct net_device **dev) {
+    check_routine_start();
+    check_routine_end();
+    return 0;
+}
+
+STATIC int ethtool_ops_get_link_MJRcheck(const char *fn,
+                                         int prepost,
+                                         u32 *retval,
+                                         struct net_device **dev) {
+    check_routine_start();
+    check_routine_end();
+    return 0;
+}
+
+STATIC int ethtool_ops_get_eeprom_len_MJRcheck(const char *fn,
+                                               int prepost,
+                                               int *retval,
+                                               struct net_device **dev) {
+    check_routine_start();
+    check_routine_end();
+    return 0;
+}
+
+STATIC int ethtool_ops_get_eeprom_MJRcheck(const char *fn,
+                                           int prepost,
+                                           int *retval,
+                                           struct net_device **dev,
+                                           struct ethtool_eeprom **eeprom,
+                                           u8 **data) {
+    check_routine_start();
+    check_routine_end();
+    return 0;
+}
+
+STATIC int ethtool_ops_set_eeprom_MJRcheck(const char *fn,
+                                           int prepost,
+                                           int *retval,
+                                           struct net_device **dev,
+                                           struct ethtool_eeprom **eeprom,
+                                           u8 **data) {
+    check_routine_start();
+    check_routine_end();
+    return 0;
+}
+
+STATIC int ethtool_ops_get_coalesce_MJRcheck(const char *fn,
+                                             int prepost,
+                                             int *retval,
+                                             struct net_device **dev,
+                                             struct ethtool_coalesce **c) {
+    check_routine_start();
+    check_routine_end();
+    return 0;
+}
+
+STATIC int ethtool_ops_set_coalesce_MJRcheck(const char *fn,
+                                             int prepost,
+                                             int *retval,
+                                             struct net_device **dev,
+                                             struct ethtool_coalesce **c) {
+    check_routine_start();
+    check_routine_end();
+    return 0;
+}
+
+STATIC int ethtool_ops_get_ringparam_MJRcheck(const char *fn,
+                                              int prepost,
+                                              struct net_device **dev,
+                                              struct ethtool_ringparam **rp) {
+    check_routine_start();
+    check_routine_end();
+    return 0;
+}
+
+STATIC int ethtool_ops_set_ringparam_MJRcheck(const char *fn,
+                                              int prepost,
+                                              int *retval,
+                                              struct net_device **dev,
+                                              struct ethtool_ringparam **rp) {
+    check_routine_start();
+    check_routine_end();
+    return 0;
+}
+
+STATIC int ethtool_ops_get_pauseparam_MJRcheck(const char *fn,
+                                               int prepost,
+                                               struct net_device **dev,
+                                               struct ethtool_pauseparam **pp) {
+    check_routine_start();
+    check_routine_end();
+    return 0;
+}
+
+STATIC int ethtool_ops_set_pauseparam_MJRcheck(const char *fn,
+                                               int prepost,
+                                               int *retval,
+                                               struct net_device **dev,
+                                               struct ethtool_pauseparam **pp) {
+    check_routine_start();
+    check_routine_end();
+    return 0;
+}
+
+STATIC int ethtool_ops_get_rx_csum_MJRcheck(const char *fn,
+                                            int prepost,
+                                            u32 *retval,
+                                            struct net_device **dev) {
+    check_routine_start();
+    check_routine_end();
+    return 0;
+}
+
+STATIC int ethtool_ops_set_rx_csum_MJRcheck(const char *fn,
+                                            int prepost,
+                                            int *retval,
+                                            struct net_device **dev,
+                                            u32 *data) {
+    check_routine_start();
+    check_routine_end();
+    return 0;
+}
+
+STATIC int ethtool_ops_get_tx_csum_MJRcheck(const char *fn,
+                                            int prepost,
+                                            u32 *retval,
+                                            struct net_device **dev) {
+    check_routine_start();
+    check_routine_end();
+    return 0;
+}
+
+STATIC int ethtool_ops_set_tx_csum_MJRcheck(const char *fn,
+                                            int prepost,
+                                            int *retval,
+                                            struct net_device **dev,
+                                            u32 *data) {
+    check_routine_start();
+    check_routine_end();
+    return 0;
+}
+
+STATIC int ethtool_ops_get_sg_MJRcheck(const char *fn,
+                                       int prepost,
+                                       u32 *retval,
+                                       struct net_device **dev) {
+    check_routine_start();
+    check_routine_end();
+    return 0;
+}
+
+STATIC int ethtool_ops_set_sg_MJRcheck(const char *fn,
+                                       int prepost,
+                                       int *retval,
+                                       struct net_device **dev,
+                                       u32 *data) {
+    check_routine_start();
+    check_routine_end();
+    return 0;
+}
+
+STATIC int ethtool_ops_get_tso_MJRcheck(const char *fn,
+                                        int prepost,
+                                        u32 *retval,
+                                        struct net_device **dev) {
+    check_routine_start();
+    check_routine_end();
+    return 0;
+}
+
+STATIC int ethtool_ops_set_tso_MJRcheck(const char *fn,
+                                        int prepost,
+                                        int *retval,
+                                        struct net_device **dev,
+                                        u32 *data) {
+    check_routine_start();
+    check_routine_end();
+    return 0;
+}
+
+STATIC int ethtool_ops_self_test_MJRcheck(const char *fn,
+                                          int prepost,
+                                          struct net_device **dev,
+                                          struct ethtool_test **t,
+                                          u64 **data) {
+    check_routine_start();
+    check_routine_end();
+    return 0;
+}
+
+STATIC int ethtool_ops_get_strings_MJRcheck(const char *fn,
+                                            int prepost,
+                                            struct net_device **dev,
+                                            u32 *stringset,
+                                            u8 **data) {
+    check_routine_start();
+    check_routine_end();
+    return 0;
+}
+
+STATIC int ethtool_ops_phys_id_MJRcheck(const char *fn,
+                                        int prepost,
+                                        int *retval,
+                                        struct net_device **dev,
+                                        u32 *data) {
+    check_routine_start();
+    check_routine_end();
+    return 0;
+}
+
+STATIC int ethtool_ops_get_ethtool_stats_MJRcheck(const char *fn,
+                                                  int prepost,
+                                                  struct net_device **dev,
+                                                  struct ethtool_stats **stats,
+                                                  u64 **data) {
+    check_routine_start();
+    check_routine_end();
+    return 0;
+}
+
+STATIC int ethtool_ops_begin_MJRcheck(const char *fn,
+                                      int prepost,
+                                      int *retval,
+                                      struct net_device **dev) {
+    check_routine_start();
+    check_routine_end();
+    return 0;
+}
+
+STATIC int ethtool_ops_complete_MJRcheck(const char *fn,
+                                         int prepost,
+                                         struct net_device **dev) {
+    check_routine_start();
+    check_routine_end();
+    return 0;
+}
+
+STATIC int ethtool_ops_get_ufo_MJRcheck(const char *fn,
+                                        int prepost,
+                                        u32 *retval,
+                                        struct net_device **dev) {
+    check_routine_start();
+    check_routine_end();
+    return 0;
+}
+
+STATIC int ethtool_ops_set_ufo_MJRcheck(const char *fn,
+                                        int prepost,
+                                        int *retval,
+                                        struct net_device **dev,
+                                        u32 *data) {
+    check_routine_start();
+    check_routine_end();
+    return 0;
+}
+
+STATIC int ethtool_ops_get_flags_MJRcheck(const char *fn,
+                                          int prepost,
+                                          u32 *retval,
+                                          struct net_device **dev) {
+    check_routine_start();
+    check_routine_end();
+    return 0;
+}
+
+STATIC int ethtool_ops_set_flags_MJRcheck(const char *fn,
+                                          int prepost,
+                                          int *retval,
+                                          struct net_device **dev,
+                                          u32 *data) {
+    check_routine_start();
+    check_routine_end();
+    return 0;
+}
+
+STATIC int ethtool_ops_get_priv_flags_MJRcheck(const char *fn,
+                                               int prepost,
+                                               u32 *retval,
+                                               struct net_device **dev) {
+    check_routine_start();
+    check_routine_end();
+    return 0;
+}
+
+STATIC int ethtool_ops_set_priv_flags_MJRcheck(const char *fn,
+                                               int prepost,
+                                               int *retval,
+                                               struct net_device **dev,
+                                               u32 *data) {
+    check_routine_start();
+    check_routine_end();
+    return 0;
+}
+
+STATIC int ethtool_ops_get_sset_count_MJRcheck(const char *fn,
+                                               int prepost,
+                                               int *retval,
+                                               struct net_device **dev,
+                                               int *data) {
+    check_routine_start();
+    check_routine_end();
+    return 0;
+}
+
+STATIC int ethtool_ops_self_test_count_MJRcheck(const char *fn,
+                                                int prepost,
+                                                int *retval,
+                                                struct net_device **dev) {
+    check_routine_start();
+    check_routine_end();
+    return 0;
+}
+
+STATIC int ethtool_ops_get_stats_count_MJRcheck(const char *fn,
+                                                int prepost,
+                                                int *retval,
+                                                struct net_device **dev) {
+    check_routine_start();
+    check_routine_end();
+    return 0;
+}
+
+STATIC int ethtool_ops_get_rxhash_MJRcheck(const char *fn,
+                                           int prepost,
+                                           int *retval,
+                                           struct net_device **dev,
+                                           struct ethtool_rxnfc **rx) {
+    check_routine_start();
+    check_routine_end();
+    return 0;
+}
+
+STATIC int ethtool_ops_set_rxhash_MJRcheck(const char *fn,
+                                           int prepost,
+                                           int *retval,
+                                           struct net_device **dev,
+                                           struct ethtool_rxnfc **rx) {
+    check_routine_start();
+    check_routine_end();
+    return 0;
+}
+
+EXPORT_SYMBOL(ethtool_ops_get_settings_MJRcheck);
+EXPORT_SYMBOL(ethtool_ops_set_settings_MJRcheck);
+EXPORT_SYMBOL(ethtool_ops_get_drvinfo_MJRcheck);
+EXPORT_SYMBOL(ethtool_ops_get_regs_len_MJRcheck);
+EXPORT_SYMBOL(ethtool_ops_get_regs_MJRcheck);
+EXPORT_SYMBOL(ethtool_ops_get_wol_MJRcheck);
+EXPORT_SYMBOL(ethtool_ops_set_wol_MJRcheck);
+EXPORT_SYMBOL(ethtool_ops_get_msglevel_MJRcheck);
+EXPORT_SYMBOL(ethtool_ops_set_msglevel_MJRcheck);
+EXPORT_SYMBOL(ethtool_ops_nway_reset_MJRcheck);
+EXPORT_SYMBOL(ethtool_ops_get_link_MJRcheck);
+EXPORT_SYMBOL(ethtool_ops_get_eeprom_len_MJRcheck);
+EXPORT_SYMBOL(ethtool_ops_get_eeprom_MJRcheck);
+EXPORT_SYMBOL(ethtool_ops_set_eeprom_MJRcheck);
+EXPORT_SYMBOL(ethtool_ops_get_coalesce_MJRcheck);
+EXPORT_SYMBOL(ethtool_ops_set_coalesce_MJRcheck);
+EXPORT_SYMBOL(ethtool_ops_get_ringparam_MJRcheck);
+EXPORT_SYMBOL(ethtool_ops_set_ringparam_MJRcheck);
+EXPORT_SYMBOL(ethtool_ops_get_pauseparam_MJRcheck);
+EXPORT_SYMBOL(ethtool_ops_set_pauseparam_MJRcheck);
+EXPORT_SYMBOL(ethtool_ops_get_rx_csum_MJRcheck);
+EXPORT_SYMBOL(ethtool_ops_set_rx_csum_MJRcheck);
+EXPORT_SYMBOL(ethtool_ops_get_tx_csum_MJRcheck);
+EXPORT_SYMBOL(ethtool_ops_set_tx_csum_MJRcheck);
+EXPORT_SYMBOL(ethtool_ops_get_sg_MJRcheck);
+EXPORT_SYMBOL(ethtool_ops_set_sg_MJRcheck);
+EXPORT_SYMBOL(ethtool_ops_get_tso_MJRcheck);
+EXPORT_SYMBOL(ethtool_ops_set_tso_MJRcheck);
+EXPORT_SYMBOL(ethtool_ops_self_test_MJRcheck);
+EXPORT_SYMBOL(ethtool_ops_get_strings_MJRcheck);
+EXPORT_SYMBOL(ethtool_ops_phys_id_MJRcheck);
+EXPORT_SYMBOL(ethtool_ops_get_ethtool_stats_MJRcheck);
+EXPORT_SYMBOL(ethtool_ops_begin_MJRcheck);
+EXPORT_SYMBOL(ethtool_ops_complete_MJRcheck);
+EXPORT_SYMBOL(ethtool_ops_get_ufo_MJRcheck);
+EXPORT_SYMBOL(ethtool_ops_set_ufo_MJRcheck);
+EXPORT_SYMBOL(ethtool_ops_get_flags_MJRcheck);
+EXPORT_SYMBOL(ethtool_ops_set_flags_MJRcheck);
+EXPORT_SYMBOL(ethtool_ops_get_priv_flags_MJRcheck);
+EXPORT_SYMBOL(ethtool_ops_set_priv_flags_MJRcheck);
+EXPORT_SYMBOL(ethtool_ops_get_sset_count_MJRcheck);
+EXPORT_SYMBOL(ethtool_ops_self_test_count_MJRcheck);
+EXPORT_SYMBOL(ethtool_ops_get_stats_count_MJRcheck);
+EXPORT_SYMBOL(ethtool_ops_get_rxhash_MJRcheck);
+EXPORT_SYMBOL(ethtool_ops_set_rxhash_MJRcheck);
